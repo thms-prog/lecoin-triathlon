@@ -17,7 +17,6 @@ export interface Workout {
   discipline: Discipline;
   title: string;
   duration: string;
-  image: string;
   summary: string;
   blocks: WorkoutBlock[];
 }
@@ -28,13 +27,19 @@ export const DISCIPLINE_LABEL: Record<Discipline, string> = {
   run: "Course",
 };
 
+// Image du hero par discipline : le programme du mois n'a pas à fournir d'image par séance.
+export const DISCIPLINE_HERO: Record<Discipline, string> = {
+  swim: "/images/hero/nage.jpg",
+  bike: "/images/hero/velo.jpg",
+  run: "/images/hero/course.jpg",
+};
+
 export const WORKOUTS: Workout[] = [
   {
     date: "2026-09-02",
     discipline: "bike",
     title: "Faible cadence 4×5'",
     duration: "~1h",
-    image: "/demo/hero-velo.jpg",
     summary:
       "Séance de force : 55-60 rpm assis, ça doit tirer dans les jambes, pas dans les poumons. Faisable au home trainer ou dehors.",
     blocks: [
