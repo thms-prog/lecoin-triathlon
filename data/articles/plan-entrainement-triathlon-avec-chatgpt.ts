@@ -391,7 +391,5 @@ CE QUE JE VEUX EN SORTIE
 <h2 id="faq">FAQ : plan triathlon avec ChatGPT</h2>
 
 <!--FAQ-->
-
-<p class="aside">Pour aller plus loin : <a href="/blog/construire-plan-entrainement-triathlon">comment construire un plan d'entraînement triathlon</a>, <a href="/blog/comprendre-la-ftp-en-velo">comprendre et tester sa FTP</a>, <a href="/blog/endurance-fondamentale-triathlon">trouver sa vraie allure d'endurance fondamentale</a>.</p>
 `,
 };
