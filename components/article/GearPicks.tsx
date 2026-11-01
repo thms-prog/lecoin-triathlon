@@ -2,7 +2,15 @@ import Image from "next/image";
 import { GEAR, amazonUrl } from "@/data/home";
 
 // Encart matériel affilié, placé là où l'article parle de l'outil (pas en fin de page).
-export default function GearPicks({ picks }: { picks: { asin: string; why: string }[] }) {
+export default function GearPicks({
+  title,
+  intro,
+  items: picks,
+}: {
+  title: string;
+  intro: string;
+  items: { asin: string; why: string }[];
+}) {
   const items = picks.flatMap((p) => {
     const item = GEAR.find((g) => g.asin === p.asin);
     return item ? [{ ...item, why: p.why }] : [];
@@ -11,11 +19,9 @@ export default function GearPicks({ picks }: { picks: { asin: string; why: strin
 
   return (
     <aside className="my-10 rounded-3xl border border-white/10 bg-panel-2 p-5 md:p-6">
-      <p className="eyebrow text-accent">Le matériel pour avoir des repères chiffrés</p>
-      <p className="mt-2 text-sm text-muted">
-        FTP, allures, temps au 100 m : sans mesure fiable, ni ChatGPT ni un coach ne peuvent caler tes intensités.
-      </p>
-      <ul className="mt-5 grid gap-3 md:grid-cols-3">
+      <p className="eyebrow text-accent">{title}</p>
+      <p className="mt-2 text-sm text-muted">{intro}</p>
+      <ul className={`mt-5 grid gap-3 ${items.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
         {items.map((item) => (
           <li key={item.asin}>
             <a

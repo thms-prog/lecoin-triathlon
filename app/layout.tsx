@@ -18,6 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  // Base des URL absolues (images de partage, canonical).
+  metadataBase: new URL("https://lecoin-triathlon.fr"),
   title: "Lecoin-Triathlon",
   description: "Entraînement du jour, bibliothèque de programmes et suivi personnalisé pour triathlètes.",
 };

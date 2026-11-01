@@ -27,11 +27,19 @@ export const article: Article = {
   dateModified: "2026-11-01",
   category: "Entraînement",
   image: "/demo/blog/chatgpt.jpg",
-  gear: [
-    { asin: "B0FLQDCR7X", why: "Home trainer connecté : il mesure tes watts et te permet de faire ton test FTP à la maison." },
-    { asin: "B0FBGDR81B", why: "Capteur de puissance sur pédales : tes vrais watts, aussi sur la route." },
-    { asin: "B0BS1TN8QL", why: "Montre GPS : allure, cardio et chronos de référence pour tes tests 5 et 10 km." },
-  ],
+  gear: {
+    title: "Le matériel pour avoir des repères chiffrés",
+    intro: "FTP, allures, temps au 100 m : sans mesure fiable, ni ChatGPT ni un coach ne peuvent caler tes intensités.",
+    items: [
+      { asin: "B0FLQDCR7X", why: "Home trainer connecté : il mesure tes watts et te permet de faire ton test FTP à la maison." },
+      { asin: "B0FBGDR81B", why: "Capteur de puissance sur pédales : tes vrais watts, aussi sur la route." },
+      { asin: "B0BS1TN8QL", why: "Montre GPS : allure, cardio et chronos de référence pour tes tests 5 et 10 km." },
+    ],
+  },
+  coaching: {
+    title: "Toutes ces corrections, faites par un vrai coach",
+    text: "Allures calées sur tes tests et réajustées quand tu progresses, intensité dosée pour ton niveau, plan qui bouge avec ta fatigue et tes imprévus.",
+  },
   faq: [
     {
       q: "Peut-on vraiment faire un plan d'entraînement triathlon avec ChatGPT ?",
@@ -287,7 +295,7 @@ CE QUE JE VEUX EN SORTIE
 
 <p>Aucun n'est rédhibitoire si tu sais le repérer et que tu repars à la charge, point par point : baisser l'intensité, recaler les allures faciles sur ton ressenti, tenir tes créneaux, réclamer une projection de temps, faire relire le plan. Beaucoup de corrections à demander toi-même, et il faut savoir lesquelles.</p>
 
-<!--COACHING:corrections-->
+<!--COACHING-->
 
 <h2 id="suivi-hebdo">Faire évoluer son plan ChatGPT semaine après semaine</h2>
 

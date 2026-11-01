@@ -7,10 +7,18 @@ import TocNav from "./TocNav";
 const longDate = (iso: string) =>
   new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
-// Entrées du sommaire, reprises du sommaire écrit dans l'article (libellés courts).
+// Entrées du sommaire : celles du sommaire écrit dans l'article (libellés courts), sinon les H2.
 function tocItems(article: Article) {
-  return [...article.content.matchAll(/<li><a href="#([^"]+)">([^<]+)<\/a><\/li>/g)].map((m) => ({ id: m[1], label: m[2] }));
+  const toc = article.content.match(/<nav class="toc"[\s\S]*?<\/nav>/)?.[0];
+  const links = toc
+    ? toc.matchAll(/<a href="#([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)
+    : article.content.matchAll(/<h2 id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g);
+  return [...links].map((m) => ({ id: m[1], label: decode(m[2].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim()) }));
 }
+
+// Le libellé sort du HTML brut : on décode les entités courantes avant de l'afficher en texte.
+const ENTITIES: Record<string, string> = { amp: "&", quot: '"', apos: "'", "#x27": "'", "#39": "'", nbsp: " ", lt: "<", gt: ">" };
+const decode = (s: string) => s.replace(/&(#?\w+);/g, (all, name: string) => ENTITIES[name] ?? all);
 
 // Colonne de droite (PC) : le sommaire seul, collé à l'écran, sans pub (coaching et Amazon
 // n'apparaissent qu'une fois, dans le texte). Il défile dans son bloc s'il dépasse la hauteur d'écran.
