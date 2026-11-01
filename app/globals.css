@@ -230,3 +230,11 @@ main > section + section::before {
   .article-html :is(.brief, .ai-reply, .warn, .split > div) > :first-child { margin-top: 0; }
   .article-html :is(.brief, .ai-reply, .warn, .split > div) > :last-child { margin-bottom: 0; }
 }
+
+/* Article sur PC : le sommaire passe dans le rail de droite. */
+@layer components {
+  @media (min-width: 1024px) {
+    .lg-hide-toc .toc { display: none; }
+  }
+  .scrollbar-thin { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+}

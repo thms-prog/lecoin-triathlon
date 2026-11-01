@@ -6,11 +6,11 @@ import GearPicks from "./GearPicks";
 
 // Le HTML de l'article est rendu côté serveur (indexable) ; les marqueurs <!--X--> sont
 // remplacés par des composants React à l'endroit exact du texte.
-export default function ArticleBody({ article }: { article: Article }) {
+export default function ArticleBody({ article, className = "" }: { article: Article; className?: string }) {
   const parts = article.content.split(/<!--([A-Z]+(?::[a-z]+)?)-->/);
 
   return (
-    <div className="article">
+    <div className={`article ${className}`}>
       <CopyButtons />
       {parts.map((part, i) => {
         if (i % 2 === 0) return <div key={i} className="article-html" dangerouslySetInnerHTML={{ __html: part }} />;
