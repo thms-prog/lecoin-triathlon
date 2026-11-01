@@ -107,3 +107,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .neon { animation: none; }
 }
+
+/* Horizon néon entre deux thématiques : ligne lumineuse + halo teal de part et d'autre. */
+main > section + section {
+  position: relative;
+}
+main > section + section::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -4rem;
+  height: 8rem;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, #3fe0ec, transparent) center / 100% 1px no-repeat,
+    radial-gradient(45% 50% at 50% 50%, rgba(0, 129, 143, 0.35), transparent);
+}

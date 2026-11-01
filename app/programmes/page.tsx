@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProgrammesPage() {
   return (
     <main className="flex-1">
-      <Section id="programmes" tone="light" eyebrow="Programmes ciblés" title="Cible ton point faible">
+      <Section id="programmes" eyebrow="Programmes ciblés" title="Cible ton point faible">
         <PlanCatalog />
       </Section>
     </main>

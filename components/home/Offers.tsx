@@ -36,7 +36,6 @@ export default function Offers() {
   return (
     <Section
       id="plans"
-      tone="light"
       eyebrow="Programmes ciblés"
       title="Cible ton point faible"
       action={<SeeAll href="/programmes" count={PDF_PLANS.length} />}
@@ -48,7 +47,7 @@ export default function Offers() {
         className="grid items-center gap-6 lg:grid-cols-2 lg:gap-20"
       >
         <div className="min-w-0">
-          <p className="hidden max-w-md text-ink-muted md:block">
+          <p className="hidden max-w-md text-muted md:block">
             6 à 8 semaines pour travailler une compétence précise. Tu suis ton programme directement sur le site :
             ta séance du jour, tes allures calculées pour toi, ta progression semaine après semaine.
           </p>
@@ -64,7 +63,7 @@ export default function Offers() {
                     onClick={() => choose(i)}
                     aria-selected={active}
                     className={`relative flex w-full flex-col py-1 text-left transition md:flex-row md:items-center md:gap-4 md:overflow-hidden md:rounded-2xl md:border md:p-3 ${
-                      active ? "md:border-accent md:bg-white md:shadow-sm" : "md:border-transparent md:hover:bg-white/60"
+                      active ? "md:border-accent md:bg-white/5" : "md:border-transparent md:hover:bg-white/5"
                     }`}
                   >
                     {/* Smartphone : barre au-dessus de l'onglet. PC : liseré en bas de la carte active. */}
@@ -73,21 +72,21 @@ export default function Offers() {
                       duration={AUTOPLAY}
                       running={seen && !paused && !dragging}
                       onEnd={() => setSelected((s) => (s + 1) % n)}
-                      className={`h-1 rounded-full bg-ink/10 md:absolute md:inset-x-0 md:bottom-0 md:h-0.5 md:rounded-none md:bg-transparent ${active ? "" : "md:hidden"}`}
+                      className={`h-1 rounded-full bg-white/10 md:absolute md:inset-x-0 md:bottom-0 md:h-0.5 md:rounded-none md:bg-transparent ${active ? "" : "md:hidden"}`}
                     />
                     <span className="relative hidden size-14 shrink-0 overflow-hidden rounded-xl md:block">
                       <Image src={p.image} alt="" fill sizes="56px" className={`object-cover ${p.position}`} />
                     </span>
                     <span className="mt-2 min-w-0 flex-1 md:mt-0">
-                      <span className={`eyebrow block truncate text-[0.6rem] md:text-xs md:text-accent ${active ? "text-accent" : "text-ink-muted"}`}>
+                      <span className={`eyebrow block truncate text-[0.6rem] md:text-xs md:text-accent ${active ? "text-accent" : "text-muted"}`}>
                         {p.discipline}
                       </span>
-                      <span className={`heading block truncate text-sm md:text-lg md:text-ink ${active ? "" : "text-ink/45"}`}>{p.title}</span>
-                      <span className="hidden text-sm text-ink-muted md:block">{p.detail}</span>
+                      <span className={`heading block truncate text-sm md:text-lg md:text-fg ${active ? "" : "text-fg/45"}`}>{p.title}</span>
+                      <span className="hidden text-sm text-muted md:block">{p.detail}</span>
                     </span>
                     <span className="hidden text-right text-sm md:block">
                       <span className="block font-semibold text-accent tabular-nums">{euros(p.price)}</span>
-                      <span className="text-ink-muted">{p.weeks} sem.</span>
+                      <span className="text-muted">{p.weeks} sem.</span>
                     </span>
                   </button>
                 </li>
@@ -97,14 +96,14 @@ export default function Offers() {
             <li className="hidden md:block">
               <Link
                 href="/programmes"
-                className="group flex items-center gap-4 rounded-2xl border border-dashed border-accent/50 p-3 transition hover:border-accent hover:bg-white/60"
+                className="group flex items-center gap-4 rounded-2xl border border-dashed border-accent/50 p-3 transition hover:border-accent hover:bg-white/5"
               >
                 <span className="heading flex size-14 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-xl text-accent">+</span>
                 <span className="flex-1">
                   <span className="heading block text-lg text-accent">Tout voir</span>
-                  <span className="text-sm text-ink-muted">Tous les programmes ciblés</span>
+                  <span className="text-sm text-muted">Tous les programmes ciblés</span>
                 </span>
-                <span className="text-sm text-ink-muted transition group-hover:text-accent">{PDF_PLANS.length} →</span>
+                <span className="text-sm text-muted transition group-hover:text-accent">{PDF_PLANS.length} →</span>
               </Link>
             </li>
           </ul>
@@ -128,7 +127,7 @@ function ProgramPreview({ plan, hint, onOpen }: { plan: (typeof PDF_PLANS)[numbe
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="animate-[fadeIn_.4s_ease-out] overflow-hidden rounded-3xl bg-bg text-fg shadow-2xl shadow-black/20">
+    <div className="animate-[fadeIn_.4s_ease-out] overflow-hidden rounded-3xl border border-white/10 bg-panel text-fg shadow-2xl shadow-black/40">
       <div className="relative h-24 md:h-40">
         <Image key={plan.image} src={plan.image} alt="" fill draggable={false} sizes="(min-width: 1024px) 600px, 100vw" className="object-cover object-[center_25%]" />
         <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/50 to-transparent" />

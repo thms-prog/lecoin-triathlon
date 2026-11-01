@@ -18,7 +18,7 @@ export default function PlanCatalog() {
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {plans.map((p) => (
           <li key={p.title} className="animate-[fadeIn_.4s_ease-out]">
-            <a href="#" className="group block overflow-hidden rounded-3xl bg-bg text-fg shadow-xl shadow-black/15 transition duration-500 hover:shadow-[0_20px_60px_-15px_var(--accent)]">
+            <a href="#" className="group block overflow-hidden rounded-3xl bg-panel text-fg ring-1 ring-white/10 shadow-xl shadow-black/40 transition duration-500 hover:shadow-[0_20px_60px_-15px_var(--accent)]">
               <div className="relative h-40">
                 <Image src={p.image} alt="" fill sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" className={`object-cover transition duration-700 group-hover:scale-105 ${p.position}`} />
                 <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/40 to-transparent" />

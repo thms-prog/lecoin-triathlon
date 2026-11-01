@@ -35,7 +35,6 @@ export default function Blog() {
   return (
     <Section
       id="blog"
-      tone="light"
       eyebrow="Blog · Derniers articles"
       title="Comprendre pour mieux s'entraîner"
       action={<SeeAll href="/blog" count={BLOG_POSTS.length} />}
@@ -52,17 +51,17 @@ export default function Blog() {
                   duration={AUTOPLAY}
                   running={seen && !paused && !dragging}
                   onEnd={() => step(1)}
-                  className="h-1 rounded-full bg-ink/10 md:h-0.5 md:rounded-none"
+                  className="h-1 rounded-full bg-white/10 md:h-0.5 md:rounded-none"
                 />
-                <span className={`heading mt-3 hidden text-sm transition md:block ${on ? "text-accent" : "text-ink/35 group-hover:text-ink/60"}`}>{pad(i + 1)}</span>
-                <span className={`mt-0.5 hidden text-sm leading-snug transition md:line-clamp-2 ${on ? "text-ink" : "text-ink-muted group-hover:text-ink"}`}>{p.title}</span>
+                <span className={`heading mt-3 hidden text-sm transition md:block ${on ? "text-accent" : "text-fg/35 group-hover:text-fg/60"}`}>{pad(i + 1)}</span>
+                <span className={`mt-0.5 hidden text-sm leading-snug transition md:line-clamp-2 ${on ? "text-fg" : "text-muted group-hover:text-fg"}`}>{p.title}</span>
               </button>
             );
           })}
           <Link href="/blog" className="group hidden md:block">
             <span className="block h-0.5 bg-[repeating-linear-gradient(90deg,var(--accent)_0_6px,transparent_6px_10px)] opacity-60 transition group-hover:opacity-100" />
             <span className="heading mt-3 block text-sm text-accent">Tout voir →</span>
-            <span className="mt-0.5 block text-sm text-ink-muted transition group-hover:text-ink">{BLOG_POSTS.length} articles</span>
+            <span className="mt-0.5 block text-sm text-muted transition group-hover:text-fg">{BLOG_POSTS.length} articles</span>
           </Link>
         </div>
 
@@ -118,7 +117,7 @@ export default function Blog() {
             <h3 className="heading mt-3 text-2xl text-balance md:text-4xl">
               <Link href={`/blog/${post.slug}`} className="transition hover:text-accent">{post.title}</Link>
             </h3>
-            <p className="mt-4 max-w-lg border-l-2 border-accent pl-4 leading-relaxed text-ink-muted">{post.excerpt}</p>
+            <p className="mt-4 max-w-lg border-l-2 border-accent pl-4 leading-relaxed text-muted">{post.excerpt}</p>
           </div>
         </div>
       </div>
