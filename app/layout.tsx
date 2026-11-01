@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 // Archivo a un axe de largeur : étiré à 125% pour les gros titres
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

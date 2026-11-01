@@ -47,7 +47,7 @@ export const PDF_PLANS = [
   },
   {
     discipline: "Enchaînements", title: "Vélo-course", detail: "Courir vite sur des jambes lourdes", weeks: 6, price: 24.9,
-    image: "/demo/pdf-enchainements.jpg", position: "object-[30%_center]",
+    image: "/images/hero/course.jpg", position: "object-[30%_center]",
     preview: {
       sessions: ["Vélo 45' + course 15'", "Footing EF · 40'", "3×(10' vélo + 5' course)"],
       today: [

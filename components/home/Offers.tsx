@@ -192,9 +192,10 @@ function ProgramPreview({ plan, hint, onOpen }: { plan: (typeof PDF_PLANS)[numbe
           </li>
         </ol>
 
-        <a href="#" className="heading block rounded-full bg-accent py-3 text-center text-sm transition hover:brightness-110">
-          Commencer ce programme · {euros(plan.price)}
-        </a>
+        {/* V1 : programmes pas encore en vente. */}
+        <p aria-disabled className="heading block cursor-default rounded-full border border-accent/60 py-3 text-center text-sm text-accent">
+          Bientôt disponible
+        </p>
       </div>
     </div>
   );

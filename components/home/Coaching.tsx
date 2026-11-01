@@ -1,7 +1,8 @@
 import { COACHING } from "@/data/home";
 import CoachingMockup from "./CoachingMockup";
 
-const CTA = "heading rounded-full bg-accent text-fg transition hover:brightness-110";
+// V1 : coaching pas encore ouvert, boutons inactifs.
+const CTA = "heading cursor-default rounded-full border border-accent/60 text-accent";
 
 export default function Coaching() {
   return (
@@ -19,9 +20,9 @@ export default function Coaching() {
               <span className="block text-sm text-muted md:ml-2 md:inline">sans engagement</span>
               <span className="block text-sm text-muted md:hidden">réponse sous 24 h</span>
             </p>
-            <a href="#" className={`${CTA} shrink-0 px-5 py-3 text-xs md:hidden`}>
-              Commencer
-            </a>
+            <span aria-disabled className={`${CTA} shrink-0 px-5 py-3 text-xs md:hidden`}>
+              Bientôt
+            </span>
           </div>
 
           <ul className="mt-8 hidden space-y-5 md:block">
@@ -47,10 +48,10 @@ export default function Coaching() {
           </div>
 
           <div className="mt-8 hidden items-center gap-4 md:flex">
-            <a href="#" className={`${CTA} px-7 py-3.5 text-sm`}>
-              Commencer le questionnaire
-            </a>
-            <span className="text-sm text-muted">Le questionnaire est gratuit</span>
+            <span aria-disabled className={`${CTA} px-7 py-3.5 text-sm`}>
+              Bientôt disponible
+            </span>
+            <span className="text-sm text-muted">Le questionnaire sera gratuit</span>
           </div>
         </div>
 
