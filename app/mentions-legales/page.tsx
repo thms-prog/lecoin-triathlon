@@ -12,15 +12,12 @@ export default function MentionsLegales() {
       <section>
         <h2>Éditeur du site</h2>
         <p>
-          <strong>{PUBLISHER.name}</strong> · {PUBLISHER.status}
-          <br />
-          SIRET : {PUBLISHER.siret}
-          <br />
-          {PUBLISHER.address}
-          <br />
-          Contact : {PUBLISHER.email}
+          Site édité par un <strong>particulier</strong>, à titre non professionnel. Conformément à l&apos;article 6 III-2
+          de la loi pour la confiance dans l&apos;économie numérique, son identité a été communiquée à l&apos;hébergeur.
         </p>
-        <p>Directeur de la publication : {PUBLISHER.name}.</p>
+        <p>
+          Contact : <a href={`mailto:${PUBLISHER.email}`}>{PUBLISHER.email}</a>
+        </p>
       </section>
       <section>
         <h2>Hébergement</h2>

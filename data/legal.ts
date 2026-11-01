@@ -1,11 +1,8 @@
-// Identité de l'éditeur, affichée dans les mentions légales (obligatoire, loi LCEN art. 6).
-// TODO avant master : remplacer les « À compléter ».
+// Éditeur affiché dans les mentions légales. Pour l'instant : particulier, site non commercial
+// (identité communiquée à l'hébergeur, loi LCEN art. 6 III-2). À remplacer par le nom, le statut,
+// le numéro d'entreprise et l'adresse dès l'inscription comme indépendant, avant toute vente.
 export const PUBLISHER = {
-  name: "À compléter",
-  status: "À compléter",
-  siret: "À compléter",
-  address: "À compléter",
-  email: "À compléter",
+  email: "contact@lecoin-triathlon.fr",
 };
 
 export const HOST = {

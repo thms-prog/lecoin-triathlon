@@ -22,7 +22,7 @@ export default function Confidentialite() {
       <section>
         <h2>Responsable du traitement</h2>
         <p>
-          {PUBLISHER.name} · contact : {PUBLISHER.email}. Voir les <Link href="/mentions-legales">mentions légales</Link>.
+          Le site est édité par un particulier · contact : <a href={`mailto:${PUBLISHER.email}`}>{PUBLISHER.email}</a>. Voir les <Link href="/mentions-legales">mentions légales</Link>.
         </p>
       </section>
       <section>
