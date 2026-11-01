@@ -2,7 +2,7 @@ import type { Article } from "./types";
 
 // Repris de tri-lab.fr (même slug, même texte, mêmes titres et FAQ pour garder le référencement).
 // Changements : styles en ligne retirés (le design vient de .article dans globals.css),
-// encarts Club Tri-Lab remplacés par le coaching 1v1 et le matériel affilié.
+// encarts Club Tri-Lab remplacés par un seul encart coaching et un seul encart matériel affilié.
 export const article: Article = {
   slug: "plan-entrainement-triathlon-avec-chatgpt",
   title: "Faire son plan d'entraînement triathlon avec ChatGPT : le guide (prompts inclus)",
@@ -72,8 +72,6 @@ export const article: Article = {
   <p><strong>Oui, ChatGPT peut générer un plan d'entraînement triathlon</strong>, et la structure est correcte : combien de séances, comment les répartir, quand décharger. Il pèche sur trois points : les <strong>allures justes</strong> (il les chiffre à partir de tes tests, mais avec un ratio générique souvent faux, ce qui pousse à courir trop vite), l'<strong>intensité globale</strong> (trop élevée pour un premier objectif), et l'<strong>adaptation</strong> (il ne suit pas ta semaine réelle).</p>
   <p>Un bon plan avec ChatGPT tient en trois temps : un <strong>prompt détaillé</strong> (pas « fais-moi un plan Ironman »), <strong>plusieurs allers-retours</strong> pour baisser l'intensité et recaler les allures faciles, et une <strong>relecture critique</strong> de ce qu'il sort.</p>
 </div>
-
-<p class="aside">Pas envie de gérer tout ça toi-même ? <a href="/#coaching">Un vrai coach</a> le fait pour toi, sans un seul prompt.</p>
 
 <nav class="toc" aria-label="Sommaire">
   <ul>
@@ -389,8 +387,6 @@ CE QUE JE VEUX EN SORTIE
 </div>
 
 <p>Si tu es plutôt dans la colonne de droite, ChatGPT te coûtera plus de temps qu'il ne t'en fait gagner. Un <a href="/#coaching">coach</a> construit ton plan à partir de tes tests, garde des allures faciles vraiment faciles, et réajuste chaque semaine selon ta fatigue et tes imprévus. Sans avoir à écrire un seul prompt.</p>
-
-<!--COACHING:plan-->
 
 <h2 id="faq">FAQ : plan triathlon avec ChatGPT</h2>
 

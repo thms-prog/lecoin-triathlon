@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleLayout from "@/components/article/ArticleLayout";
+import Blog from "@/components/home/Blog";
 import { ARTICLES, BLOG_INDEXABLE, SITE_URL, getArticle } from "@/data/articles";
 
 export function generateStaticParams() {
@@ -80,6 +81,8 @@ export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">)
     <main className="flex-1">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ArticleLayout article={article} />
+      {/* « À lire aussi » : la section Blog de l'accueil, sans l'article en cours. */}
+      <Blog id="a-lire" eyebrow="Blog · À lire aussi" exclude={article.slug} />
     </main>
   );
 }

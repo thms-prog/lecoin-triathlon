@@ -96,7 +96,8 @@ export const MOCKUP_COMMENTS = [
 export const MOCKUP_FORM = [100, 103, 101, 106, 110, 108, 113, 112, 116, 114, 119, 118];
 
 // Articles repris de Tri-Lab (mêmes slugs, mêmes dates). L'accueil affiche les plus récents,
-// la page /blog les liste tous.
+// la page /blog les liste tous. Seuls ceux qui faisaient des vues sont gardés (PhEF et VMA abandonnés) ;
+// « débuter » garde l'URL réellement en ligne sur tri-lab.fr (-complet, -2026 y redirige).
 export const BLOG_POSTS = [
   { slug: "calculateur-temps-triathlon", date: "2026-09-11", category: "Course", image: "/demo/blog/calculateur.jpg", title: "Combien de temps pour finir un triathlon ? Le calculateur", excerpt: "Calcule ton temps du Sprint à l'Ironman à partir de tes chronos nage, vélo, course." },
   { slug: "plan-entrainement-triathlon-avec-chatgpt", date: "2026-09-10", category: "Entraînement", image: "/demo/blog/chatgpt.jpg", title: "Faire son plan triathlon avec ChatGPT : le guide", excerpt: "Le prompt qui marche, ce qu'il produit vraiment, et quand l'IA ne suffit plus." },
@@ -109,12 +110,10 @@ export const BLOG_POSTS = [
   { slug: "transitions-triathlon-guide-complet", date: "2026-04-27", category: "Course", image: "/demo/blog/transitions.jpg", title: "Les transitions : guide complet T1 et T2", excerpt: "Ta zone, les gestes clés, les règles et les erreurs qui coûtent des secondes." },
   { slug: "endurance-fondamentale-triathlon", date: "2026-04-01", category: "Entraînement", image: "/demo/blog/ef.jpg", title: "L'endurance fondamentale en triathlon", excerpt: "Zone 2, règle 80/20, piège de la zone 3 et calcul de ton allure EF sur les 3 disciplines." },
   { slug: "budget-triathlon-2026-guide-ultime", date: "2026-03-06", category: "Matériel", image: "/demo/blog/budget.jpg", title: "Quel budget pour le triathlon en 2026 ?", excerpt: "Sprint ~800 €, Olympique ~1 100 €, 70.3 ~1 500 €, Ironman ~2 800 € : le kit par distance." },
-  { slug: "debuter-triathlon-guide-2026", date: "2026-02-09", category: "Débuter", image: "/demo/blog/debuter.webp", title: "Comment débuter le triathlon : le guide complet", excerpt: "Matériel, plan, tests VMA/FTP, erreurs à éviter pour réussir ton premier triathlon." },
+  { slug: "debuter-triathlon-guide-complet", date: "2026-02-09", category: "Débuter", image: "/demo/blog/debuter.webp", title: "Comment débuter le triathlon : le guide complet", excerpt: "Matériel, plan, tests VMA/FTP, erreurs à éviter pour réussir ton premier triathlon." },
   { slug: "construire-plan-entrainement-triathlon", date: "2026-02-05", category: "Entraînement", image: "/demo/blog/plan.webp", title: "Construire son plan d'entraînement en triathlon", excerpt: "Structure hebdo, macrocycles et zones d'entraînement, du Sprint à l'Ironman." },
   { slug: "distances-triathlon-guide-complet", date: "2026-01-26", category: "Débuter", image: "/demo/blog/distances.webp", title: "Distances en triathlon : comparatif et choix du format", excerpt: "XS, Sprint, M, 70.3, Ironman : distances, prix et temps moyens dans un tableau clair." },
   { slug: "comprendre-la-ftp-en-velo", date: "2026-01-14", category: "Vélo", image: "/demo/blog/ftp.webp", title: "Qu'est-ce que la FTP ? Définition et tests", excerpt: "3 tests fiables, le calcul pas à pas et tes zones d'entraînement vélo." },
-  { slug: "PhEF-Physical-evaluation-fitness", date: "2026-01-09", category: "Tests", image: "/demo/blog/phef.webp", title: "PhEF : Physical Evaluation Fitness", excerpt: "Le test de l'armée belge : déroulement, barèmes officiels et conseils pour le réussir." },
-  { slug: "Qu-est-ce-que-la-VMA", date: "2026-01-02", category: "Course", image: "/demo/blog/vma.webp", title: "Qu'est-ce que la VMA ? Définition et tests", excerpt: "5 tests précis, le calcul étape par étape et tes allures exactes pour le triathlon." },
 ];
 
 export type BlogPost = (typeof BLOG_POSTS)[number];

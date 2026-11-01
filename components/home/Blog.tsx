@@ -9,7 +9,6 @@ import StoryBar from "./StoryBar";
 import Section from "./Section";
 import { useSeen, useSwipe } from "./useSwipe";
 
-const POSTS = latestPosts(6);
 const AUTOPLAY = "7s";
 
 export const formatPostDate = (iso: string) =>
@@ -20,7 +19,17 @@ const pad = (n: number) => String(n).padStart(2, "0");
 // « À la une » des derniers articles : onglets en haut comme le matériel, qui défilent tout seuls
 // façon stories (pause au survol) ; l'image, dans un cadre néon, se fait glisser au doigt
 // ou à la souris. Le dernier onglet mène à tous les articles.
-export default function Blog() {
+// Réutilisé tel quel en bas des articles (« À lire aussi ») : exclude retire l'article en cours.
+export default function Blog({
+  exclude,
+  id = "blog",
+  eyebrow = "Blog · Derniers articles",
+}: {
+  exclude?: string;
+  id?: string;
+  eyebrow?: string;
+}) {
+  const POSTS = latestPosts(7).filter((p) => p.slug !== exclude).slice(0, 6);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [swiped, setSwiped] = useState(false);
@@ -34,8 +43,8 @@ export default function Blog() {
 
   return (
     <Section
-      id="blog"
-      eyebrow="Blog · Derniers articles"
+      id={id}
+      eyebrow={eyebrow}
       title="Comprendre pour mieux s'entraîner"
       action={<SeeAll href="/blog" count={BLOG_POSTS.length} />}
     >

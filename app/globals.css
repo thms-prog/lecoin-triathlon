@@ -109,10 +109,10 @@ body {
 }
 
 /* Horizon néon entre deux thématiques : ligne lumineuse + halo teal de part et d'autre. */
-main > section + section {
+main > :is(section, article) + section {
   position: relative;
 }
-main > section + section::before {
+main > :is(section, article) + section::before {
   content: "";
   position: absolute;
   inset-inline: 0;

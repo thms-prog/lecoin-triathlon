@@ -6,15 +6,11 @@ const VARIANTS = {
     title: "Toutes ces corrections, faites par un vrai coach",
     text: "Allures calées sur tes tests et réajustées quand tu progresses, intensité dosée pour ton niveau, plan qui bouge avec ta fatigue et tes imprévus.",
   },
-  plan: {
-    title: "Le plan que ChatGPT essaie de faire, sans les erreurs",
-    text: "Ton programme écrit à la main à partir de ton questionnaire, un fil de commentaires sous chaque séance, une réponse sous 24 h.",
-  },
 };
 
 export type CoachingVariant = keyof typeof VARIANTS;
 
-// Encart de conversion vers le coaching 1v1, au milieu de l'article.
+// Encart vers le coaching 1v1 : une seule fois par article, au milieu du texte.
 export default function CoachingCta({ variant }: { variant: CoachingVariant }) {
   const v = VARIANTS[variant];
   return (
