@@ -123,3 +123,110 @@ main > section + section::before {
     linear-gradient(90deg, transparent, #3fe0ec, transparent) center / 100% 1px no-repeat,
     radial-gradient(45% 50% at 50% 50%, rgba(0, 129, 143, 0.35), transparent);
 }
+
+/* Articles du blog : HTML repris de Tri-Lab, mis en forme ici (pas de style en ligne). */
+@layer components {
+  .article-html {
+    color: color-mix(in oklab, var(--fg) 82%, transparent);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  .article-html h2 {
+    margin: 3rem 0 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 5rem;
+    font-family: var(--font-archivo);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+  .article-html p { margin: 1.1em 0; }
+  .article-html strong { color: var(--fg); }
+  .article-html a { color: #3fe0ec; text-decoration: underline; text-underline-offset: 3px; }
+  .article-html a:hover { color: var(--fg); }
+  .article-html ul, .article-html ol { margin: 1em 0; padding-left: 1.4em; }
+  .article-html ul { list-style: disc; }
+  .article-html ol { list-style: decimal; }
+  .article-html li { margin: 0.45em 0; padding-left: 0.2em; }
+  .article-html li::marker { color: var(--accent); font-weight: 700; }
+  .article-html .aside { font-size: 0.95rem; color: var(--muted); }
+
+  /* « En bref » : la réponse directe en tête d'article (reprise par Google et les IA). */
+  .article-html .brief {
+    margin: 2.5rem 0 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(63, 224, 236, 0.35);
+    border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: 0 0 40px -20px var(--accent);
+  }
+  .article-html .brief-title,
+  .article-html .label,
+  .article-html .warn-title,
+  .article-html .split-title { font-weight: 700; color: var(--fg); margin-bottom: 0.4em; }
+  .article-html .brief-title { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: #3fe0ec; }
+
+  .article-html .toc {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--panel-2);
+  }
+  .article-html .toc ul { margin: 0; list-style: decimal; }
+  .article-html .toc a { color: var(--fg); text-decoration: none; }
+  .article-html .toc a:hover { color: #3fe0ec; }
+
+  .article-html .table-wrap { margin: 1.5rem 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 1rem; }
+  .article-html table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 0.95rem; line-height: 1.5; }
+  .article-html table.compact { min-width: 0; }
+  .article-html th { padding: 0.75rem 1rem; text-align: left; background: var(--panel); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .article-html td { padding: 0.7rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
+  .article-html td.row { font-weight: 600; color: var(--fg); }
+  .article-html td.good { color: #3fe0ec; }
+  .article-html td.bad { color: var(--crit); }
+  .article-html td.mid { color: var(--warn); }
+
+  .article-html .prompt { margin: 1.5rem 0; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: #05080d; }
+  .article-html .prompt-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem; border-bottom: 1px solid var(--line); background: var(--panel);
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .article-html .prompt-head button {
+    padding: 0.3rem 0.8rem; border: 1px solid var(--accent); border-radius: 999px;
+    color: #3fe0ec; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+  }
+  .article-html .prompt-head button:hover { background: var(--accent); color: var(--fg); }
+  .article-html .prompt pre {
+    margin: 0; padding: 1rem 1.1rem; white-space: pre-wrap; overflow-wrap: anywhere;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; color: var(--fg);
+  }
+
+  /* Réponses de ChatGPT citées : visuellement « extérieures » au texte. */
+  .article-html .ai-reply {
+    margin: 1.5rem 0; padding: 1.1rem 1.25rem; border: 1px solid var(--line); border-left: 3px solid #10a37f;
+    border-radius: 0 1rem 1rem 0; background: var(--panel-2); font-size: 0.95rem;
+  }
+  .article-html .ai-reply-head { margin-top: 0; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #10a37f; }
+  .article-html .ai-reply .label { margin: 1.1em 0 0.3em; }
+  .article-html .muted { color: var(--muted); }
+
+  .article-html .warn {
+    margin: 1rem 0; padding: 1rem 1.25rem; border-left: 3px solid var(--crit);
+    border-radius: 0 1rem 1rem 0; background: rgba(255, 107, 107, 0.06);
+  }
+
+  .article-html .split { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 768px) { .article-html .split { grid-template-columns: 1fr 1fr; } }
+  .article-html .split > div { padding: 1.1rem 1.25rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--panel); }
+  .article-html .split .yes { border-color: rgba(63, 224, 236, 0.4); }
+  .article-html .split .no { border-color: rgba(255, 107, 107, 0.4); }
+  .article-html .split ul { margin-bottom: 0; }
+
+  .article-html :is(.brief, .ai-reply, .warn, .split > div) > :first-child { margin-top: 0; }
+  .article-html :is(.brief, .ai-reply, .warn, .split > div) > :last-child { margin-bottom: 0; }
+}
