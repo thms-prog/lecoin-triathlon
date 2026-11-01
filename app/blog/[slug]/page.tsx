@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import ArticleLayout from "@/components/article/ArticleLayout";
 import Blog from "@/components/home/Blog";
 import { ARTICLES, BLOG_INDEXABLE, SITE_URL, getArticle } from "@/data/articles";
@@ -33,7 +34,30 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   };
 }
 
-export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">) {
+// Le slug est lu sous <Suspense> : le « shell » instantané de la route ne dépend pas de l'URL
+// (exigé par Cache Components). Les articles restent prérendus au build, HTML complet compris.
+export default function ArticlePage({ params }: PageProps<"/blog/[slug]">) {
+  return (
+    <main className="flex-1">
+      <Suspense fallback={<ArticleSkeleton />}>
+        <ArticleContent params={params} />
+      </Suspense>
+    </main>
+  );
+}
+
+function ArticleSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-3xl animate-pulse px-5 pt-8 pb-20 md:pt-14">
+      <div className="h-4 w-32 rounded bg-white/5" />
+      <div className="mt-8 h-12 w-full rounded bg-white/5" />
+      <div className="mt-3 h-12 w-2/3 rounded bg-white/5" />
+      <div className="mt-8 aspect-16/9 rounded-3xl bg-white/5" />
+    </div>
+  );
+}
+
+async function ArticleContent({ params }: Pick<PageProps<"/blog/[slug]">, "params">) {
   const article = getArticle((await params).slug);
   if (!article) notFound();
   const url = `${SITE_URL}/blog/${article.slug}`;
@@ -78,11 +102,11 @@ export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">)
   ];
 
   return (
-    <main className="flex-1">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ArticleLayout article={article} />
       {/* « À lire aussi » : la section Blog de l'accueil, sans l'article en cours. */}
       <Blog id="a-lire" eyebrow="Blog · À lire aussi" exclude={article.slug} />
-    </main>
+    </>
   );
 }
