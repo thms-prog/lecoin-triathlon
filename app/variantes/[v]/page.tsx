@@ -8,7 +8,7 @@ import { loadProgramme } from "@/lib/programme";
 export const metadata: Metadata = { robots: { index: false } };
 
 export function generateStaticParams() {
-  return ["a", "b", "c"].map((v) => ({ v }));
+  return ["a", "b", "c", "d"].map((v) => ({ v }));
 }
 
 export default function Variante({ params }: PageProps<"/variantes/[v]">) {
@@ -21,7 +21,7 @@ export default function Variante({ params }: PageProps<"/variantes/[v]">) {
 
 async function Content({ params }: Pick<PageProps<"/variantes/[v]">, "params">) {
   const { v } = await params;
-  if (!["a", "b", "c"].includes(v)) notFound();
+  if (!["a", "b", "c", "d"].includes(v)) notFound();
   // Semaine de démo : les vraies séances du programme, du lundi 2 au samedi 7 novembre.
   const week = loadProgramme().filter((w) => w.date >= "2026-11-02" && w.date <= "2026-11-07");
   return <VariantShell v={v as VariantKey} week={week} />;

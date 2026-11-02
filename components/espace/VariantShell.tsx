@@ -6,9 +6,10 @@ import type { Workout } from "@/data/workouts";
 import { AthleteA, CoachA } from "./VariantA";
 import { AthleteB, CoachB } from "./VariantB";
 import { AthleteC, CoachC } from "./VariantC";
+import { AthleteD, CoachD } from "./VariantD";
 
-// TEMP /variantes : bascule Athlète / Coach et navigation entre les 3 variantes.
-const NAMES = { a: "Tableau de bord", b: "Ma semaine", c: "Mission control" } as const;
+// TEMP /variantes : bascule Athlète / Coach et navigation entre les variantes.
+const NAMES = { d: "Synthèse", a: "Tableau de bord", b: "Ma semaine", c: "Mission control" } as const;
 export type VariantKey = keyof typeof NAMES;
 
 export default function VariantShell({ v, week }: { v: VariantKey; week: Workout[] }) {
@@ -43,6 +44,7 @@ export default function VariantShell({ v, week }: { v: VariantKey; week: Workout
       {v === "a" && (view === "athlete" ? <AthleteA week={week} /> : <CoachA />)}
       {v === "b" && (view === "athlete" ? <AthleteB week={week} /> : <CoachB week={week} />)}
       {v === "c" && (view === "athlete" ? <AthleteC week={week} /> : <CoachC />)}
+      {v === "d" && (view === "athlete" ? <AthleteD week={week} /> : <CoachD week={week} />)}
     </main>
   );
 }

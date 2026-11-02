@@ -5,6 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = { robots: { index: false } };
 
 const VARIANTS = [
+  { v: "d", name: "Synthèse · à valider", text: "Athlète : l'aperçu de C, la semaine de C cliquable avec le détail de chaque séance, les 3 onglets de B et la conversation dessous. Coach : la messagerie de B, avec l'aperçu et la semaine de l'athlète ouvert." },
   { v: "a", name: "Tableau de bord", text: "Tout visible d'un coup : chiffres clés, forme, volume, régularité, tests, semaine et échanges. Côté coach, un tableau des athlètes trié par urgence." },
   { v: "b", name: "Ma semaine", text: "L'action d'abord : les jours en cartes à faire glisser, la séance du jour à valider sur place, puis un graphique à la fois. Côté coach, une boîte de réception." },
   { v: "c", name: "Mission control", text: "Le plus futuriste : une grande jauge de fraîcheur, des rails de mesures, la semaine en ligne de temps. Côté coach, un mur d'athlètes qui s'allument." },
@@ -19,7 +20,7 @@ export default function Variantes() {
         Données fictives (Julie, 70.3 en mai 2027) et vraie semaine du programme. Chaque variante a une vue athlète et une vue coach,
         à basculer en haut de page.
       </p>
-      <div className="mt-10 grid gap-5 md:grid-cols-3">
+      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {VARIANTS.map((x) => (
           <Link key={x.v} href={`/variantes/${x.v}`} className="neon rounded-3xl bg-panel p-6 transition hover:bg-panel-2">
             <span className="heading text-5xl text-accent">{x.v.toUpperCase()}</span>

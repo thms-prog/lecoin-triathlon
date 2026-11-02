@@ -9,7 +9,7 @@ import { AlertPill, Avatar, DAY_SHORT, SportDot, StatusPill, TestCards, Thread, 
 
 // TEMP /variantes — B « Ma semaine » : l'action d'abord (valider sa séance), les graphiques ensuite.
 
-function ValidateToday() {
+export function ValidateToday() {
   const [rpe, setRpe] = useState<number | null>(null);
   const [sent, setSent] = useState(false);
   if (sent) return <p className="mt-4 rounded-xl bg-accent/15 px-3 py-2 text-sm text-fg">✓ Séance validée · RPE {rpe}. Ton coach est prévenu.</p>;

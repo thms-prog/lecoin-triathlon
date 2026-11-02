@@ -8,7 +8,7 @@ import { AlertPill, Avatar, DAY_SHORT, TestCards, Thread, freshness, sortedAthle
 // TEMP /variantes — C « Mission control » : une jauge centrale, des rails de mesures, un rendu néon.
 
 // Jauge en demi-cercle de la fraîcheur, de −30 (fatigué) à +25 (frais).
-function Dial({ value, size = 280, compact = false }: { value: number; size?: number; compact?: boolean }) {
+export function Dial({ value, size = 280, compact = false }: { value: number; size?: number; compact?: boolean }) {
   const min = -30;
   const max = 25;
   const r = size / 2 - 14;
@@ -42,7 +42,7 @@ function Dial({ value, size = 280, compact = false }: { value: number; size?: nu
   );
 }
 
-const Rail = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
+export const Rail = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
   <div className="border-l-2 border-[#3fe0ec]/60 pl-4">
     <p className="eyebrow text-[0.65rem] text-muted">{label}</p>
     <p className="text-2xl font-semibold text-fg">{value}</p>
