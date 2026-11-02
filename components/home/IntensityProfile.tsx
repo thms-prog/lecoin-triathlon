@@ -20,10 +20,13 @@ export default function IntensityProfile({
 }) {
   const W = 1000;
   const MAX = 120;
+  const RECOVERY = 30;
   const gap = 6;
+  // Une répétition donne une barre par segment (5' / 3' / 5' / 3'…), toutes rattachées à la même
+  // ligne (i) de la liste. Un bloc sans intensité (« 30'' · récup ») reste visible en barre basse.
   const timed = workout.blocks
-    .map((b, i) => ({ i, min: minutes(b), pct: percent(b) }))
-    .filter((b): b is { i: number; min: number; pct: number } => b.min !== null && b.pct !== null);
+    .flatMap((b, i) => (b.segments ?? [b]).map((s) => ({ i, min: minutes(s), pct: percent(s) ?? RECOVERY })))
+    .filter((b): b is { i: number; min: number; pct: number } => b.min !== null);
   const total = timed.reduce((s, b) => s + b.min, 0);
   // Position horizontale de chaque barre = somme des durées qui la précèdent.
   const bars = timed.map((b, k) => ({
@@ -49,14 +52,14 @@ export default function IntensityProfile({
             <line x1="0" x2={W} y1={height - (p / MAX) * height} y2={height - (p / MAX) * height} stroke="white" strokeOpacity="0.08" strokeDasharray="4 6" vectorEffect="non-scaling-stroke" />
           </g>
         ))}
-      {bars.map((b) => {
+      {bars.map((b, k) => {
         const w = (b.min / total) * W - gap;
         const h = (b.pct / MAX) * height;
         const bx = b.x;
         const on = active === b.i;
         const dim = active !== undefined && active !== null && !on;
         return (
-          <g key={b.i} onPointerEnter={() => onActive?.(b.i)} onPointerLeave={() => onActive?.(null)} style={{ cursor: onActive ? "pointer" : undefined }}>
+          <g key={k} onPointerEnter={() => onActive?.(b.i)} onPointerLeave={() => onActive?.(null)} style={{ cursor: onActive ? "pointer" : undefined }}>
             <rect x={bx} y={height - h} width={w} height={h} rx="3" fill={`url(#${id}-fill)`} filter={`url(#${id}-glow)`} opacity={on ? 0.9 : 0.45} />
             <rect x={bx} y={height - h} width={w} height={h} rx="3" fill={`url(#${id}-fill)`} opacity={dim ? 0.35 : 1} className="transition-opacity duration-300" />
             <rect x={bx} y={height - h} width={w} height="3" fill="#3fe0ec" opacity={dim ? 0.4 : 1} />

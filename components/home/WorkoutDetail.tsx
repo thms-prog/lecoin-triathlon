@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { DISCIPLINE_LABEL, type Workout } from "@/data/workouts";
 import IntensityProfile from "./IntensityProfile";
-import { intensity, minutes } from "./intensity";
+import { intensity, quantityLabel } from "./intensity";
 import Section from "./Section";
 
 // Profil d'intensité façon Zwift en grand (largeur = durée, hauteur = intensité), liste des blocs
@@ -31,7 +31,6 @@ export default function WorkoutDetail({ workout }: { workout: Workout }) {
           <ol className="mt-4">
             {workout.blocks.map((block, i) => {
               const value = intensity(block);
-              const min = minutes(block);
               const on = active === i;
               return (
                 <li
@@ -40,7 +39,7 @@ export default function WorkoutDetail({ workout }: { workout: Workout }) {
                   onPointerLeave={() => setActive(null)}
                   className={`grid grid-cols-[3rem_6rem_1fr] items-baseline gap-3 rounded-xl px-3 py-3 transition md:grid-cols-[4rem_8rem_1fr] ${on ? "bg-white/5" : ""}`}
                 >
-                  <span className="text-sm text-muted-2 tabular-nums">{min ? `${min}'` : "—"}</span>
+                  <span className="text-sm text-muted-2 tabular-nums">{quantityLabel(block)}</span>
                   <span className={`heading tabular-nums transition ${on ? "text-[#3fe0ec]" : "text-accent"}`}>
                     {value ? `${value.value} ${value.unit}` : "—"}
                   </span>

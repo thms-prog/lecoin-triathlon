@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
     ],
   },
   partialPrefetching: true,
+  // Le programme (data/programme/*.md) est relu côté serveur à chaque régénération horaire de l'accueil.
+  outputFileTracingIncludes: { "/": ["./data/programme/**"] },
   turbopack: {
     rules: {
       "*.css": {

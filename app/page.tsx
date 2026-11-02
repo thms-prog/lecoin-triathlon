@@ -4,10 +4,10 @@ import Offers from "@/components/home/Offers";
 import Coaching from "@/components/home/Coaching";
 import Blog from "@/components/home/Blog";
 import Gear from "@/components/home/Gear";
-import { getTodayWorkout } from "@/data/workouts";
+import { getTodayWorkout } from "@/lib/today";
 
-export default function Home() {
-  const workout = getTodayWorkout();
+export default async function Home() {
+  const workout = await getTodayWorkout();
   return (
     <main className="flex-1">
       <TodayHero workout={workout} />
