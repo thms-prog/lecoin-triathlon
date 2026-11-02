@@ -1,7 +1,8 @@
 import Image from "next/image";
 import FilmGrain from "./FilmGrain";
 import IntensityProfile from "./IntensityProfile";
-import { DISCIPLINE_HERO, DISCIPLINE_LABEL, type Workout } from "@/data/workouts";
+import { DISCIPLINE_HERO, DISCIPLINE_LABEL } from "@/data/workouts";
+import type { RecentWorkout } from "@/lib/today";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("fr-FR", {
@@ -14,7 +15,17 @@ function formatDate(iso: string): string {
 
 // Smartphone : image en haut, texte dessous, le tout tient sur un écran.
 // PC : image plein cadre, texte en fondu sur la droite (le sujet est à gauche).
-export default function TodayHero({ workout }: { workout: Workout }) {
+// Onglets de jours en haut du panneau dès qu'il y a plus d'une séance consultable (J à J-3).
+export default function TodayHero({
+  days,
+  active,
+  onSelect,
+}: {
+  days: RecentWorkout[];
+  active: number;
+  onSelect: (i: number) => void;
+}) {
+  const { workout, isToday } = days[active];
   return (
     <section className="relative flex h-[calc(100svh-3.5rem)] flex-col md:block">
       <div className="relative flex-1 md:absolute md:inset-0">
@@ -37,7 +48,27 @@ export default function TodayHero({ workout }: { workout: Workout }) {
         {/* Panneau de verre : discipline en contour néon, titre, profil d'intensité de la séance. */}
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-bg/45 p-5 shadow-2xl shadow-black/40 backdrop-blur-xl md:w-[30rem] md:p-8">
           <span aria-hidden className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-[#3fe0ec] to-transparent" />
-          <p className="eyebrow text-muted">Entraînement du jour · {formatDate(workout.date)}</p>
+          {days.length > 1 && (
+            <div role="tablist" aria-label="Séances des derniers jours" className="mb-4 flex flex-wrap gap-1.5">
+              {days.map((d, i) => (
+                <button
+                  key={d.workout.date}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  onClick={() => onSelect(i)}
+                  className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
+                    i === active ? "border-accent bg-accent text-fg" : "border-white/15 text-muted hover:border-accent/60 hover:text-fg"
+                  }`}
+                >
+                  {d.label}
+                </button>
+              ))}
+            </div>
+          )}
+          <p className="eyebrow text-muted">
+            {isToday ? "Entraînement du jour" : "Séance"} · {formatDate(workout.date)}
+          </p>
           <h1 className="display-xl mt-3 text-5xl text-transparent [-webkit-text-stroke:1.5px_#3fe0ec] [text-shadow:0_0_28px_rgba(0,129,143,0.75)] md:text-6xl">
             {DISCIPLINE_LABEL[workout.discipline]}
           </h1>

@@ -1,17 +1,15 @@
-import TodayHero from "@/components/home/TodayHero";
-import WorkoutDetail from "@/components/home/WorkoutDetail";
+import TodayBlock from "@/components/home/TodayBlock";
 import Offers from "@/components/home/Offers";
 import Coaching from "@/components/home/Coaching";
 import Blog from "@/components/home/Blog";
 import Gear from "@/components/home/Gear";
-import { getTodayWorkout } from "@/lib/today";
+import { getRecentWorkouts } from "@/lib/today";
 
 export default async function Home() {
-  const workout = await getTodayWorkout();
+  const days = await getRecentWorkouts();
   return (
     <main className="flex-1">
-      <TodayHero workout={workout} />
-      <WorkoutDetail workout={workout} />
+      <TodayBlock days={days} />
       <Offers />
       <Coaching />
       <Blog />
