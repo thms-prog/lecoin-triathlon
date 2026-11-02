@@ -49,8 +49,9 @@ export default function TodayHero({
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-bg/45 p-5 shadow-2xl shadow-black/40 backdrop-blur-xl md:w-[30rem] md:p-8">
           <span aria-hidden className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-[#3fe0ec] to-transparent" />
           {days.length > 1 && (
+            // Ordre chronologique à l'écran (Sam. 31 · Hier · Aujourd'hui) ; days reste du plus récent au plus ancien.
             <div role="tablist" aria-label="Séances des derniers jours" className="mb-4 flex flex-wrap gap-1.5">
-              {days.map((d, i) => (
+              {days.map((d, i) => ({ d, i })).reverse().map(({ d, i }) => (
                 <button
                   key={d.workout.date}
                   type="button"
