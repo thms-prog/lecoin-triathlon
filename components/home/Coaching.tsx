@@ -1,10 +1,13 @@
 import { COACHING } from "@/data/home";
-import CoachingMockup from "./CoachingMockup";
+import { loadProgramme } from "@/lib/programme";
+import CoachingPreview from "./CoachingPreview";
 
 // V1 : coaching pas encore ouvert, boutons inactifs.
 const CTA = "heading cursor-default rounded-full border border-accent/60 text-accent";
 
 export default function Coaching() {
+  // Semaine d'exemple de l'aperçu : de vraies séances du programme (lundi 2 → samedi 7 novembre).
+  const week = loadProgramme().filter((w) => w.date >= "2026-11-02" && w.date <= "2026-11-07");
   return (
     <section id="coaching" className="scroll-mt-14 bg-bg text-fg">
       <div className="mx-auto grid w-full max-w-350 items-center gap-5 px-5 py-6 md:gap-10 md:px-12 md:py-24 lg:grid-cols-2 lg:gap-20 lg:px-20">
@@ -24,6 +27,11 @@ export default function Coaching() {
               Bientôt
             </span>
           </div>
+
+          <p className="mt-6 hidden max-w-lg leading-relaxed text-muted md:block">
+            Ton coach écrit tes séances à la main, semaine après semaine. Toi, tu as ton espace : ta forme du jour,
+            ta semaine détaillée, ta progression et ta messagerie.
+          </p>
 
           <ul className="mt-8 hidden space-y-5 md:block">
             {COACHING.points.map((p) => (
@@ -55,7 +63,7 @@ export default function Coaching() {
           </div>
         </div>
 
-        <CoachingMockup />
+        <CoachingPreview week={week} />
       </div>
     </section>
   );

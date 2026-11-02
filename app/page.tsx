@@ -8,7 +8,7 @@ import { getRecentWorkouts } from "@/lib/today";
 export default async function Home() {
   const days = await getRecentWorkouts();
   return (
-    <main className="flex-1">
+    <main className="flex-1 overflow-x-clip">
       <TodayBlock days={days} />
       <Offers />
       <Coaching />
