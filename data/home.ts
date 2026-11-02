@@ -63,37 +63,18 @@ export const PDF_PLANS = [
 export const COACHING = {
   price: 80,
   points: [
-    { title: "Un vrai coach, pas une IA", text: "Ton programme est écrit et ajusté à la main, par un coach qui connaît ton parcours." },
-    { title: "Réponse sous 24 h", text: "Sous chaque séance, un fil de commentaires : tu racontes, ton coach répond et ajuste la suite." },
-    { title: "Adapté à ta vie et à ton ressenti", text: "Boulot, déplacements, fatigue : tes séances bougent avec toi, pas l'inverse." },
-    { title: "Ta progression en graphiques", text: "Tu vois ta forme évoluer semaine après semaine." },
+    { title: "Un vrai coach, pas une IA", text: "Ton programme est écrit et ajusté à la main, semaine après semaine, par un coach qui connaît ton parcours." },
+    { title: "Ta forme en un coup d'œil", text: "Fraîcheur, forme, fatigue, régularité : ton espace les calcule chaque jour à partir des séances que tu valides." },
+    { title: "Chaque séance détaillée", text: "Tes blocs, tes intensités, le profil de la séance. Tu valides, tu notes ton ressenti : ton coach voit tout." },
+    { title: "Une messagerie avec ton coach", text: "Tu racontes ta séance, il répond sous 24 h et ajuste la suite à ta fatigue et à tes imprévus." },
   ],
-  // Le bouton mène au questionnaire d'entrée, qui sert de base au début du programme.
+  // Le bouton mènera au questionnaire d'entrée, qui sert de base au début du programme.
   steps: [
     { title: "Questionnaire", text: "Ton niveau, tes objectifs, tes dispos, ton historique." },
     { title: "Ton programme", text: "Ton coach construit tes premières semaines sur mesure." },
-    { title: "C'est parti", text: "Tu t'entraînes, tu commentes, on ajuste ensemble." },
+    { title: "C'est parti", text: "Tu t'entraînes, tu valides tes séances, on ajuste ensemble." },
   ],
 };
-
-// Données fictives de la maquette de l'espace client.
-export const MOCKUP_WEEK = [
-  { day: "L", discipline: "Course", state: "done" },
-  { day: "M", discipline: "Nage", state: "done" },
-  { day: "M", discipline: "Vélo", state: "today" },
-  { day: "J", discipline: "Repos", state: "moved" },
-  { day: "V", discipline: "Course", state: "planned" },
-  { day: "S", discipline: "Vélo", state: "planned" },
-  { day: "D", discipline: "Renfo", state: "planned" },
-] as const;
-
-export const MOCKUP_COMMENTS = [
-  { from: "athlete", name: "Julie", text: "Journée chargée au boulot, jambes lourdes dès le 3e bloc. RPE 7 au lieu de 6." },
-  { from: "coach", name: "Coach", text: "Bien géré. Avec ton déplacement jeudi, je décale le footing à vendredi et je raccourcis samedi." },
-] as const;
-
-// Forme sur 12 semaines (indice arbitraire, la semaine 1 vaut 100).
-export const MOCKUP_FORM = [100, 103, 101, 106, 110, 108, 113, 112, 116, 114, 119, 118];
 
 // Articles repris de Tri-Lab (mêmes slugs, mêmes dates). L'accueil affiche les plus récents,
 // la page /blog les liste tous. Seuls ceux qui faisaient des vues sont gardés (PhEF et VMA abandonnés) ;
